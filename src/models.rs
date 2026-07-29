@@ -52,11 +52,13 @@ impl Category {
 
     pub fn add_hero(&mut self, hero_name: &String) -> Option<()> {
         const HERO_PREFIX: &str = "npc_dota_hero_";
-        if !hero_name.starts_with(HERO_PREFIX) {
-            let hero_name = HERO_PREFIX.to_string() + hero_name;
-        }
+        let true_hero_name = if hero_name.starts_with(HERO_PREFIX) {
+            HERO_PREFIX.to_string()
+        } else {
+            format!("{}{}", HERO_PREFIX, hero_name)
+        };
 
-        let hero = rdotaconstants::Hero::get(hero_name)?;
+        let hero = rdotaconstants::Hero::get(true_hero_name)?;
         let id = hero.id as u32;
         self.hero_ids.push(id);
         Some(())
