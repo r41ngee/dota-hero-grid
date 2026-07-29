@@ -95,9 +95,7 @@ impl Object {
     fn width(&self) -> f32 {
         (self.corners.0.x - self.corners.1.x).abs()
     }
-}
 
-impl Object {
     pub fn into_categories(&self) -> Vec<Category> {
         match &self.value {
             Value::Category(c) => {
