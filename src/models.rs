@@ -24,9 +24,9 @@ pub struct Grid {
 }
 
 impl Grid {
-    pub fn new(name: String) -> Self {
+    pub fn new(name: &str) -> Self {
         Self {
-            name,
+            name: name.into(),
             data: Vec::new(),
         }
     }
@@ -46,24 +46,24 @@ pub struct Category {
 
 impl Category {
     pub fn new(
-        name: String,
+        name: &str,
         pos: (f32, f32),
         size: (f32, f32)
     ) -> Self {
         Self {
-            name,
+            name: name.into(),
             pos,
             size,
             hero_ids: Vec::new(),
         }
     }
 
-    pub fn add_hero(&mut self, hero_name: &String) -> Option<()> {
+    pub fn add_hero(&mut self, hero_name: &str) -> Option<()> {
         const HERO_PREFIX: &str = "npc_dota_hero_";
         let true_hero_name = if hero_name.starts_with(HERO_PREFIX) {
-            HERO_PREFIX.to_string()
+            HERO_PREFIX
         } else {
-            format!("{}{}", HERO_PREFIX, hero_name)
+            &format!("{}{}", HERO_PREFIX, hero_name)
         };
 
         let hero = rdotaconstants::Hero::get(true_hero_name)?;
