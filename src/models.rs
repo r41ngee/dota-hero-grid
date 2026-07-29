@@ -1,3 +1,4 @@
+use getset::Setters;
 use derive_getters::Getters;
 
 #[derive(Getters, Clone)]
@@ -36,7 +37,8 @@ impl Grid {
     }
 }
 
-#[derive(Getters, Clone)]
+#[derive(Getters, Clone, Setters)]
+#[getset(set = "pub")]
 pub struct Category {
     name: String,
     pos: (f32, f32),
