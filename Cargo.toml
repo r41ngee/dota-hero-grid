@@ -3,6 +3,9 @@ name = "dota-hero-grid"
 version = "0.1.0"
 edition = "2024"
 
+[features]
+geometry = []
+
 [dependencies]
 derive-getters = "0.5.0"
 rdotaconstants = "0.2.0"
