@@ -11,6 +11,10 @@ impl GridMap {
             data: Vec::with_capacity(4),
         }
     }
+
+    pub fn add_grid(&mut self, grid: Grid) {
+        self.data.push(grid);
+    }
 }
 
 #[derive(Getters, Clone)]
@@ -25,6 +29,10 @@ impl Grid {
             name,
             data: Vec::new(),
         }
+    }
+
+    pub fn add_category(&mut self, category: Category) {
+        self.data.push(category);
     }
 }
 
