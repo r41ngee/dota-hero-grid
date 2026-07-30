@@ -1,0 +1,7 @@
+[package]
+name = "dotagrid-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dota-hero-grid = { version = "0.1.0", path = "../dota-hero-grid" }

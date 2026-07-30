@@ -25,6 +25,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "dotagrid-cli"
+version = "0.1.0"
+dependencies = [
+ "dota-hero-grid",
+]
+
+[[package]]
 name = "getset"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
