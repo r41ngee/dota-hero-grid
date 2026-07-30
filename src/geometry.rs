@@ -134,7 +134,7 @@ impl Node {
             Node::Split(v, _) => {
                 let max_idx = v.len().checked_sub(1).unwrap_or(0);
                 if max_idx < idx {
-                    Err("Index is bigger than vector")
+                    Err("index out of bounds")
                 } else {
                     v.insert(idx, node);
                     Ok(())
@@ -151,7 +151,7 @@ impl Node {
             Node::Split(v, _) => {
                 let max_idx = v.len().checked_sub(1).unwrap_or(0);
                 if max_idx < idx {
-                    Err("Index is bigger than vector")
+                    Err("index out of bounds")
                 } else {
                     v.remove(idx);
                     Ok(())
