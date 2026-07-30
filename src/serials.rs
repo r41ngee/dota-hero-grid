@@ -66,3 +66,81 @@ pub fn serialize(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> 
     let sgm: SerializableGridMap = gridmap.clone().into();
     serde_json::to_string(&sgm)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{Grid, GridMap};
+
+    #[test]
+    fn serialize_empty() {
+        let gm = GridMap::new();
+        let json = serialize(&gm).unwrap();
+        assert!(json.contains("\"version\":3"));
+        assert!(json.contains("\"configs\":[]"));
+    }
+
+    #[test]
+    fn serialize_one_grid() {
+        let mut gm = GridMap::new();
+        let mut grid = Grid::new("test_config");
+        grid.add_category(Category::new("str", (0.0, 0.0), (600.0, 400.0)));
+        gm.add_grid(grid);
+
+        let json = serialize(&gm).unwrap();
+        assert!(json.contains("test_config"));
+        assert!(json.contains("str"));
+        assert!(json.contains("\"x_position\":0.0"));
+        assert!(json.contains("\"y_position\":0.0"));
+        assert!(json.contains("\"width\":600.0"));
+        assert!(json.contains("\"height\":400.0"));
+    }
+
+    #[test]
+    fn serialize_multiple_categories() {
+        let mut gm = GridMap::new();
+        let mut grid = Grid::new("g");
+        grid.add_category(Category::new("a", (0.0, 0.0), (100.0, 100.0)));
+        grid.add_category(Category::new("b", (100.0, 0.0), (100.0, 100.0)));
+        gm.add_grid(grid);
+
+        let json = serialize(&gm).unwrap();
+        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
+        let cats = &parsed["configs"][0]["categories"];
+        assert_eq!(cats.as_array().unwrap().len(), 2);
+        assert_eq!(cats[0]["category_name"], "a");
+        assert_eq!(cats[1]["category_name"], "b");
+    }
+
+    #[test]
+    fn serialize_multiple_grids() {
+        let mut gm = GridMap::new();
+        gm.add_grid(Grid::new("g1"));
+        gm.add_grid(Grid::new("g2"));
+
+        let json = serialize(&gm).unwrap();
+        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
+        assert_eq!(parsed["configs"].as_array().unwrap().len(), 2);
+    }
+
+    #[test]
+    fn serialize_includes_hero_ids() {
+        let mut gm = GridMap::new();
+        let mut grid = Grid::new("g");
+        let mut cat = Category::new("test", (0.0, 0.0), (100.0, 100.0));
+        cat.set_hero_ids(vec![1, 42, 99]);
+        grid.add_category(cat);
+        gm.add_grid(grid);
+
+        let json = serialize(&gm).unwrap();
+        assert!(json.contains("[1,42,99]") || json.contains("[1, 42, 99]"));
+    }
+
+    #[test]
+    fn serialize_roundtrip_version() {
+        let gm = GridMap::new();
+        let json = serialize(&gm).unwrap();
+        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
+        assert_eq!(parsed["version"], 3);
+    }
+}
