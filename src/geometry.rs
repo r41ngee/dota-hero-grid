@@ -47,10 +47,10 @@ impl Node {
             Node::Split(v, d) => {
                 let len = v.len();
                 let width = size.0;
-                let heigth = size.1;
+                let height = size.1;
                 match d {
                     Direction::Column => {
-                        let per = heigth / len as f32;
+                        let per = height / len as f32;
                         for (idx, item) in v.iter_mut().enumerate() {
                             item.layout(
                                 (pos.0, per * idx as f32 + pos.1),
@@ -63,7 +63,7 @@ impl Node {
                         for (idx, item) in v.iter_mut().enumerate() {
                             item.layout(
                                 (per * idx as f32 + pos.0, pos.1),
-                                (per, heigth)
+                                (per, height)
                             );
                         }
                     }
@@ -94,7 +94,7 @@ impl Node {
     /// if there are some.
     pub fn children(&self) -> Option<&[Node]> {
         match self {
-            Node::Split(v, _) => if v.is_empty() { Some(v) } else { None },
+            Node::Split(v, _) => if !v.is_empty() { Some(v) } else { None },
             Node::Category(_) => None,
         }
     }
@@ -132,7 +132,7 @@ impl Node {
         match self {
             Node::Category(_) => Err("Tried to insert node into a category"),
             Node::Split(v, _) => {
-                let max_idx = v.len() - 1;
+                let max_idx = v.len().checked_sub(1).unwrap_or(0);
                 if max_idx < idx {
                     Err("Index is bigger than vector")
                 } else {
@@ -149,7 +149,7 @@ impl Node {
         match self {
             Node::Category(_) => Err("Tried to remove node from a category"),
             Node::Split(v, _) => {
-                let max_idx = v.len() - 1;
+                let max_idx = v.len().checked_sub(1).unwrap_or(0);
                 if max_idx < idx {
                     Err("Index is bigger than vector")
                 } else {
