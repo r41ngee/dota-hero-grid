@@ -8,6 +8,7 @@ rust-version = "1.85"
 exclude = [
     ".vscode/"
 ]
+repository = "https://github.com/r41ngee/dota-hero-grid"
 
 [features]
 geometry = []
