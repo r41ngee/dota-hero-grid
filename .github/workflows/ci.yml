@@ -23,3 +23,6 @@ jobs:
             
             - name: Test
               run: cargo test --verbose --all-features --workspace
+
+            - name: Check docs
+              run: cargo doc --verbose --all-features --workspace
