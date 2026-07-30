@@ -46,6 +46,8 @@ pub struct Category {
     hero_ids: Vec<u32>,
 }
 
+use std::borrow::Cow;
+
 impl Category {
     pub fn new(
         name: &str,
@@ -62,13 +64,13 @@ impl Category {
 
     pub fn add_hero(&mut self, hero_name: &str) -> Option<()> {
         const HERO_PREFIX: &str = "npc_dota_hero_";
-        let true_hero_name = if hero_name.starts_with(HERO_PREFIX) {
-            HERO_PREFIX
+        let true_hero_name: Cow<'_, str> = if hero_name.starts_with(HERO_PREFIX) {
+            Cow::Borrowed(hero_name)
         } else {
-            &format!("{}{}", HERO_PREFIX, hero_name)
+            Cow::Owned(format!("{}{}", HERO_PREFIX, hero_name))
         };
 
-        let hero = rdotaconstants::Hero::get(true_hero_name)?;
+        let hero = rdotaconstants::Hero::get(&true_hero_name)?;
         let id = hero.id as u32;
         self.hero_ids.push(id);
         Some(())
