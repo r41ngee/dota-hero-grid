@@ -1,3 +1,9 @@
+//! JSON serialization for [`crate::GridMap`].
+//!
+//! Internal `Serializable*` types mirror the public API but with
+//! serde-compatible field names. Use [`serialize`] to convert a
+//! [`crate::GridMap`] into a JSON string.
+
 use serde::{Deserialize, Serialize};
 
 use crate::Category;

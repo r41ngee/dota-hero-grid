@@ -1,4 +1,18 @@
+//! Recursive tree layout system.
+//!
+//! [`Node`] is a recursive enum — leaf [`Category`] or [`Node::Split`] with
+//! children arranged in a [`Direction::Row`] or [`Direction::Column`]. 
+//! 
+//! Call [`Node::layout`]
+//! to distribute position and size down the tree, then [`Node::into_flat`]
+//! to collect all categories with computed coordinates.
+
 use crate::*;
+
+/// Default size for grid.
+/// 
+/// Can be used in [`Node::layout`].
+pub const GRID_SIZE: (f32, f32) = (1000.0, 500.0);
 
 /// Enum describing a direction of [Node::Split]
 pub enum Direction {
@@ -18,8 +32,6 @@ pub enum Node {
     /// Mid variant.
     Split(Vec<Node>, Direction)
 }
-
-pub const GRID_SIZE: (f32, f32) = (1000.0, 500.0);
 
 /// Methods responsible for main
 /// interactions with tree

@@ -1,3 +1,8 @@
+//! Core data types for the hero grid configuration.
+//!
+//! [`GridMap`] holds named [`Grid`] configurations, each containing
+//! [`Category`] entries with positional data and associated hero IDs.
+
 use getset::Setters;
 use derive_getters::Getters;
 
