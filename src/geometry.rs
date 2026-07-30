@@ -187,21 +187,21 @@ impl Node {
     /// Method used to determine
     /// number of nodes
     /// in the container.
-    pub fn len(&self) -> Result<usize, &str> {
+    pub fn len(&self) -> usize {
         match self {
-            Node::Category(_) => Err("Tried to check length of a category"),
+            Node::Category(_) => 0,
             Node::Split(v, _) => {
-                Ok(v.len())
+                v.len()
             }
         }
     }
 
     /// Method used to determine
     /// if container is empty.
-    pub fn is_empty(&self) -> Result<bool, &str> {
+    pub fn is_empty(&self) -> bool {
         match self {
-            Node::Category(_) => Err("Category cannot be empty"),
-            Node::Split(v, _) => Ok(v.is_empty())
+            Node::Category(_) => false,
+            Node::Split(v, _) => v.is_empty()
         }
     }
 }
@@ -285,7 +285,7 @@ mod tests {
         let mut n = Node::Split(vec![], Direction::Row);
         n.push(Node::Category(cat("a"))).unwrap();
         n.push(Node::Category(cat("b"))).unwrap();
-        assert_eq!(n.len().unwrap(), 2);
+        assert_eq!(n.len(), 2);
     }
 
     // ── insert ──
@@ -297,7 +297,7 @@ mod tests {
             Node::Category(cat("c")),
         ], Direction::Column);
         n.insert(Node::Category(cat("b")), 1).unwrap();
-        assert_eq!(n.len().unwrap(), 3);
+        assert_eq!(n.len(), 3);
     }
 
     #[test]
@@ -333,7 +333,7 @@ mod tests {
             Node::Category(cat("b")),
         ], Direction::Row);
         assert!(n.remove(0).is_ok());
-        assert_eq!(n.len().unwrap(), 1);
+        assert_eq!(n.len(), 1);
     }
 
     #[test]
@@ -385,19 +385,19 @@ mod tests {
     #[test]
     fn len_split() {
         let n = Node::Split(vec![Node::Category(cat("a")), Node::Category(cat("b"))], Direction::Column);
-        assert_eq!(n.len().unwrap(), 2);
+        assert_eq!(n.len(), 2);
     }
 
     #[test]
     fn len_empty_split() {
         let n = Node::Split(vec![], Direction::Row);
-        assert_eq!(n.len().unwrap(), 0);
+        assert_eq!(n.len(), 0);
     }
 
     #[test]
-    fn len_category_err() {
+    fn len_category_zero() {
         let n = Node::Category(cat("a"));
-        assert!(n.len().is_err());
+        assert_eq!(n.len(), 0);
     }
 
     // ── is_empty ──
@@ -405,19 +405,19 @@ mod tests {
     #[test]
     fn empty_split_is_empty() {
         let n = Node::Split(vec![], Direction::Column);
-        assert!(n.is_empty().unwrap());
+        assert!(n.is_empty());
     }
 
     #[test]
     fn nonempty_split_not_empty() {
         let n = Node::Split(vec![Node::Category(cat("a"))], Direction::Column);
-        assert!(!n.is_empty().unwrap());
+        assert!(!n.is_empty());
     }
 
     #[test]
-    fn is_empty_category_err() {
+    fn is_empty_category_false() {
         let n = Node::Category(cat("a"));
-        assert!(n.is_empty().is_err());
+        assert!(!n.is_empty());
     }
 
     // ── children ──
@@ -705,7 +705,7 @@ mod tests {
             Node::Category(cat("c")),
         ], Direction::Column);
         root.remove(1).unwrap();
-        assert_eq!(root.len().unwrap(), 2);
+        assert_eq!(root.len(), 2);
     }
 
     // ── swap order reflected in layout ──
