@@ -68,6 +68,26 @@ impl From<Category> for SerializableCategory {
     }
 }
 
+/// Serialize a [`crate::GridMap`] into a JSON string.
+///
+/// The output contains a `version` field, a list of `configs`, each with
+/// `categories` holding position, size, and hero IDs.
+///
+/// # Example
+///
+/// ```
+/// use dota_hero_grid::{GridMap, Grid, Category, serialize};
+///
+/// let mut map = GridMap::new();
+/// let mut grid = Grid::new("example");
+/// grid.add_category(Category::new("str", (0.0, 0.0), (600.0, 400.0)));
+/// map.add_grid(grid);
+///
+/// let json = serialize(&map).unwrap();
+/// assert!(json.contains("example"));
+/// assert!(json.contains("\"version\":3"));
+/// assert!(json.contains("\"x_position\":0.0"));
+/// ```
 pub fn serialize(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> {
     let sgm: SerializableGridMap = gridmap.clone().into();
     serde_json::to_string(&sgm)

@@ -6,23 +6,51 @@
 use getset::Setters;
 use derive_getters::Getters;
 
+/// Top-level container for multiple hero grid configurations.
+///
+/// Each [`Grid`] holds a named set of [`Category`] entries.
+///
+/// # Example
+///
+/// ```
+/// use dota_hero_grid::GridMap;
+///
+/// let mut map = GridMap::new();
+/// map.add_grid(dota_hero_grid::Grid::new("lanes"));
+/// assert_eq!(map.data().len(), 1);
+/// ```
 #[derive(Getters, Clone)]
 pub struct GridMap {
     data: Vec<Grid>,
 }
 
 impl GridMap {
+    /// Create an empty [`GridMap`].
     pub fn new() -> Self {
         Self {
             data: Vec::with_capacity(4),
         }
     }
 
+    /// Append a [`Grid`] configuration.
     pub fn add_grid(&mut self, grid: Grid) {
         self.data.push(grid);
     }
 }
 
+/// A named collection of [`Category`] entries forming one grid layout.
+///
+/// # Example
+///
+/// ```
+/// use dota_hero_grid::Grid;
+///
+/// let mut grid = Grid::new("safe_lane");
+/// grid.add_category(dota_hero_grid::Category::new(
+///     "carry", (0.0, 0.0), (400.0, 300.0),
+/// ));
+/// assert_eq!(grid.data().len(), 1);
+/// ```
 #[derive(Getters, Clone)]
 pub struct Grid {
     name: String,
@@ -30,6 +58,7 @@ pub struct Grid {
 }
 
 impl Grid {
+    /// Create a new [`Grid`] with the given name and no categories.
     pub fn new(name: &str) -> Self {
         Self {
             name: name.into(),
@@ -37,11 +66,29 @@ impl Grid {
         }
     }
 
+    /// Append a [`Category`] to this grid.
     pub fn add_category(&mut self, category: Category) {
         self.data.push(category);
     }
 }
 
+/// A rectangular region on the grid with a name, position, size, and hero IDs.
+///
+/// `Category` is the leaf node of the geometry tree (see
+/// [`crate::geometry::Node`]). Its position and size can be computed
+/// by [`crate::geometry::Node::layout`].
+///
+/// # Example
+///
+/// ```
+/// use dota_hero_grid::Category;
+///
+/// let mut cat = Category::new("mid", (100.0, 50.0), (400.0, 300.0));
+/// assert_eq!(cat.name(), "mid");
+/// assert_eq!(cat.pos(), &(100.0, 50.0));
+/// assert_eq!(cat.size(), &(400.0, 300.0));
+/// assert!(cat.hero_ids().is_empty());
+/// ```
 #[derive(Getters, Clone, Setters)]
 #[getset(set = "pub")]
 pub struct Category {
@@ -54,6 +101,7 @@ pub struct Category {
 use std::borrow::Cow;
 
 impl Category {
+    /// Create a new [`Category`].
     pub fn new(
         name: &str,
         pos: (f32, f32),
@@ -67,6 +115,10 @@ impl Category {
         }
     }
 
+    /// Look up a hero by name and add its numeric ID to the category.
+    ///
+    /// The hero name may be given with or without the `npc_dota_hero_` prefix.
+    /// Returns `None` if the hero is not recognised.
     pub fn add_hero(&mut self, hero_name: &str) -> Option<()> {
         const HERO_PREFIX: &str = "npc_dota_hero_";
         let true_hero_name: Cow<'_, str> = if hero_name.starts_with(HERO_PREFIX) {
