@@ -1,5 +1,6 @@
 [package]
 name = "dota-hero-grid"
+description = "Data types and recursive layout for Dota 2 hero grid configurations"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
