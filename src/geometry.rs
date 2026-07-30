@@ -87,7 +87,7 @@ impl Node {
     }
 }
 
-/// Methods responsible for navigations
+/// Methods responsible for navigation
 /// on the tree.
 impl Node {
     /// Returns an `Vec` slice with child nodes
@@ -108,7 +108,7 @@ impl Node {
         }
     }
 
-    /// Used to define if this node is terminal.
+    /// Defines if this node is terminal.
     pub fn is_leaf(&self) -> bool {
         if let Node::Category(_) = self {
             true
@@ -118,7 +118,7 @@ impl Node {
 
 /// Methods used to interact with nodes containment.
 impl Node {
-    /// Method used to append new node into container.
+    /// Appends new node into container.
     pub fn push(&mut self, node: Node) -> Result<(), &'static str> {
         match self {
             Node::Category(_) => Err("Tried to push a node into a category"),
@@ -126,7 +126,7 @@ impl Node {
         }
     }
 
-    /// Method used to insert new node into container
+    /// Inserts new node into container
     /// in a defined place.
     pub fn insert(&mut self, node: Node, idx: usize) -> Result<(), &str> {
         match self {
@@ -143,7 +143,7 @@ impl Node {
         }
     }
 
-    /// Method used to remove a determined node
+    /// Removes a determined node
     /// from the container.
     pub fn remove(&mut self, idx: usize) -> Result<(), &str> {
         match self {
@@ -160,7 +160,7 @@ impl Node {
         }
     }
 
-    /// Method used to swap nodes
+    /// Swaps nodes
     /// in the container.
     /// 
     /// ### Arguments
@@ -184,7 +184,7 @@ impl Node {
         }
     }
 
-    /// Method used to determine
+    /// Determines
     /// number of nodes
     /// in the container.
     pub fn len(&self) -> usize {
@@ -196,7 +196,7 @@ impl Node {
         }
     }
 
-    /// Method used to determine
+    /// Determines
     /// if container is empty.
     pub fn is_empty(&self) -> bool {
         match self {
@@ -207,7 +207,7 @@ impl Node {
 }
 
 impl Node {
-    /// Method used to get a reference to the
+    /// Gets a reference to the
     /// category with given name.
     pub fn find(&self, name: &str) -> Option<&Node> {
         match self {
@@ -225,7 +225,7 @@ impl Node {
         }
     }
 
-    /// Method used to get a **mutable** reference to the
+    /// Gets a **mutable** reference to the
     /// category with given name.
     pub fn find_mut(&mut self, name: &str) -> Option<&mut Node> {
         match self {
