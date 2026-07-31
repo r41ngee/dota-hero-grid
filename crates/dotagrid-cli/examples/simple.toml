@@ -1,0 +1,13 @@
+[[grids]]
+name = "test"
+
+[[grids.categories]]
+name = "123213"
+x = 0
+y = 500
+w = 500
+h = 300
+heroes = [
+    "antimage",
+    "pudge",
+]
