@@ -15,10 +15,14 @@ jobs:
       CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
       - name: Detect changed crates
         id: changed
         run: |
+          git fetch origin main
+
           changed=$(git diff --name-only origin/main HEAD)
 
           echo "${{ matrix.crate }}=false" >> "$GITHUB_OUTPUT"
