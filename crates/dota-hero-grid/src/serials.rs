@@ -93,6 +93,11 @@ pub fn serialize(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> 
     serde_json::to_string(&sgm)
 }
 
+pub fn serialize_pretty(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> {
+    let sgm: SerializableGridMap = gridmap.clone().into();
+    serde_json::to_string_pretty(&sgm)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

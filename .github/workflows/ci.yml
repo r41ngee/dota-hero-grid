@@ -19,7 +19,10 @@ jobs:
             - uses: dtolnay/rust-toolchain@stable
 
             - name: Build
-              run: cargo build --verbose --all-features
+              run: cargo build --verbose --all-features --workspace
             
             - name: Test
-              run: cargo test --verbose --all-features
+              run: cargo test --verbose --all-features --workspace
+
+            - name: Check docs
+              run: cargo doc --verbose --all-features --workspace
