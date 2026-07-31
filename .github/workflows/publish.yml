@@ -1,0 +1,31 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    uses: "./.github/workflows/ci.yml"
+
+  publish:
+    needs: build-test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        crate: ["dota-hero-grid", "dotagrid-cli"]
+    env:
+      CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Detect changed crates
+        id: changed
+        run: |
+          git fetch origin master --depth=1
+
+          changed=$(git diff --name-only origin/master HEAD)
+
+          echo "${{ matrix.crate }}=false" >> "$GITHUB_OUTPUT"
+
+          grep -q '^crates/${{ matrix.crate }}/' <<< "$changed" && echo "${{ matrix.crate }}=true" >> "$GITHUB_OUTPUT"
+
+      - if: steps.changed.outputs[matrix.crate] == 'true'
+        run: cargo publish --package ${{matrix.crate}}
