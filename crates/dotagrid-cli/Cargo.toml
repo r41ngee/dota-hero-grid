@@ -1,14 +1,11 @@
 [package]
 name = "dotagrid-cli"
+description = "Data types and recursive layout for Dota 2 hero grid configurations"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
 rust-version = "1.85"
 repository = "https://github.com/r41ngee/dota-hero-grid"
-
-include = [
-    "examples/"
-]
 
 [dependencies]
 anyhow = "1.0.104"
