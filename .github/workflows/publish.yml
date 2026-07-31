@@ -27,7 +27,11 @@ jobs:
 
           echo "${{ matrix.crate }}=false" >> "$GITHUB_OUTPUT"
 
-          grep -q '^crates/${{ matrix.crate }}/' <<< "$changed" && echo "${{ matrix.crate }}=true" >> "$GITHUB_OUTPUT"
+          if grep -q '^crates/dota-hero-grid/' <<< "$changed"; then
+            echo "dota-hero-grid=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "dota-hero-grid=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - if: steps.changed.outputs[matrix.crate] == 'true'
         run: cargo publish --package ${{matrix.crate}}
