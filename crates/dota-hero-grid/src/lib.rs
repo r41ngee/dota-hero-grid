@@ -4,6 +4,7 @@
 //! - [`models`] — core data types: `GridMap`, `Grid`, `Category`
 //! - [`serials`] — JSON serialization for `GridMap`
 //! - [`geometry`] — recursive tree layout system (behind `geometry` feature)
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 pub mod serials;
 pub use serials::*;
