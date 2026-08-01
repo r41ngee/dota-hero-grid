@@ -8,6 +8,7 @@ on:
         options:
           - '["dota-hero-grid"]'
           - '["dotagrid-cli"]'
+          - '["dotagrid-cli", "dota-hero-grid"]'
 
 
 jobs:
