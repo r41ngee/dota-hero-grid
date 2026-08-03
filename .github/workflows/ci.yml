@@ -1,28 +1,46 @@
 on:
-    workflow_call:
-    push:
-        branches:
-            [main]
-    pull_request:
-        branches:
-            [main]
+  workflow_call:
+  push:
+    branches:
+      [main]
+  pull_request:
+    branches:
+      [main]
 
 jobs:
-    test:
-        strategy:
-            fail-fast: false
-            matrix:
-                os: [ubuntu-latest, windows-latest, macos-latest]
-        runs-on: ${{ matrix.os }}
-        steps:
-            - uses: actions/checkout@v7
-            - uses: dtolnay/rust-toolchain@stable
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
 
-            - name: Build
-              run: cargo build --verbose --all-features --workspace
-            
-            - name: Test
-              run: cargo test --verbose --all-features --workspace
+      - name: Install ffmpeg
+        run: |
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg \
+            libavcodec-dev \
+            libavformat-dev \
+            libavutil-dev \
+            libswscale-dev \
+            libswresample-dev \
+            pkg-config
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            brew install ffmpeg pkg-config
+          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            choco install ffmpeg pkgconfiglite -y
+          fi
+        
 
-            - name: Check docs
-              run: cargo doc --verbose --all-features --workspace
+      - name: Build
+        run: cargo build --verbose --all-features --workspace
+      
+      - name: Test
+        run: cargo test --verbose --all-features --workspace
+
+      - name: Check docs
+        run: cargo doc --verbose --all-features --workspace
