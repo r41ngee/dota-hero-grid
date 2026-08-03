@@ -1,5 +1,6 @@
 use clap::Parser;
-use std::{fs, io::Write};
+use std::fs;
+use std::io::Write;
 use dota_hero_grid::*;
 use std::collections::HashMap;
 
@@ -10,13 +11,12 @@ mod dev;
 fn main() -> Result<(), anyhow::Error> {
     let args = cli::Cli::parse();
 
-    match &args.action {
+    let grid = match &args.action {
         cli::Action::FromPic { input, grid_name } => {
-            const GRID_PIC_SIZE: (u32, u32) = (128, 32);
+            const GRID_PIC_SIZE: (u32, u32) = (256, 64);
 
-            let mut gm = GridMap::new();
             let mut grid = Grid::new(grid_name);
-            let mut cat = Category::new("", (0.0, 0.0), (1000.0, 500.0));
+            let mut cat = Category::new("", (0.0, 0.0), (1200.0, 800.0));
 
             let img = image::open(input)?;
             let img = img.resize_exact(GRID_PIC_SIZE.0, GRID_PIC_SIZE.1, image::imageops::FilterType::Nearest);
@@ -31,10 +31,7 @@ fn main() -> Result<(), anyhow::Error> {
                 }
             }
             grid.add_category(cat);
-            gm.add_grid(grid);
-
-            let outfile = args.output.unwrap_or_else(|| "hero_grid_config.json".to_string());
-            fs::write(outfile, serialize_pretty(&gm)?)?;
+            Some(grid)
         },
 
         // DEV
@@ -84,6 +81,30 @@ fn main() -> Result<(), anyhow::Error> {
             let toml_str = toml::to_string(&hpps)?;
             let mut ofile = fs::File::create(&output_path)?;
             ofile.write_all(toml_str.as_bytes())?;
+
+            None
+        }
+    };
+
+    if let Some(grid) = grid {
+        if let Some(add_to) = args.add_to {
+            if !std::fs::exists(&add_to)? {
+                return Err(anyhow::anyhow!("File {} does not exist", add_to));
+            }
+
+            let mut map = dota_hero_grid::deserialize(
+                &std::fs::read_to_string(&add_to)?
+            )?;
+
+            map.add_grid(grid);
+            let mut file = std::fs::File::open(&add_to)?;
+            file.write(serialize(&map)?.as_bytes())?;
+        } else {
+            let mut map = dota_hero_grid::GridMap::new();
+            map.add_grid(grid);
+            let output_path = args.output.unwrap_or("hero_grid_config.json".to_string());
+            let mut output_file = std::fs::File::create(&output_path)?;
+            output_file.write(serialize_pretty(&map)?.as_bytes())?;
         }
     }
 
