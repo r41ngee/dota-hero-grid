@@ -19,6 +19,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install ffmpeg
+        if: matrix.os != 'windows-latest'
         run: |
           if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
             sudo apt-get update
@@ -31,10 +32,11 @@ jobs:
             pkg-config
           elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
             brew install ffmpeg pkg-config
-          elif [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            choco install ffmpeg pkgconfiglite -y
           fi
-        
+
+      - name: Install ffmpeg (windows)
+        if: matrix.os == 'windows-latest'
+        run: choco install ffmpeg pkgconfiglite -y
 
       - name: Build
         run: cargo build --verbose --all-features --workspace
