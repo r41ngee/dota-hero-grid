@@ -1,7 +1,9 @@
+name: Release
+
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
   workflow_dispatch:
 
 permissions:
@@ -22,55 +24,52 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Get version
-        id: get_version
-        run: echo "version=$(cargo pkgid | sed 's/.*#//')" >> $GITHUB_OUTPUT
+        id: version
+        shell: bash
+        run: |
+          echo "version=$(cargo pkgid | sed 's/.*#//')" >> "$GITHUB_OUTPUT"
 
-      - name: Install ffmpeg
+      - name: Install FFmpeg
         uses: AnimMouse/setup-ffmpeg@v1
 
       - name: Build
         run: cargo build --release --all-features --package dotagrid-cli
 
-      - name: Create release archive
+      - name: Create archive
         shell: bash
         run: |
           mkdir release
           cp target/release/dotagrid-cli release/
-          cp "$(command -v ffmpeg)" release/
-          tar -czvf release.tar.gz release
+
+          if command -v ffmpeg >/dev/null; then
+            cp "$(command -v ffmpeg)" release/
+          fi
+
+          ARCHIVE="dotagrid-cli-${{ steps.version.outputs.version }}-${{ matrix.os }}.tar.gz"
+          tar -czf "$ARCHIVE" release
 
       - uses: actions/upload-artifact@v7
         with:
-          name: release-${{ matrix.os }}-${{ steps.get_version.outputs.version }}
-          path: release.tar.gz
+          name: release-${{ matrix.os }}-${{ steps.version.outputs.version }}
+          path: dotagrid-cli-${{ steps.version.outputs.version }}-${{ matrix.os }}.tar.gz
 
   release:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v7
-      - uses: dtolnay/rust-toolchain@stable
-
-      - name: Get version
-        id: get_version
-        run: echo "version=$(cargo pkgid | sed 's/.*#//')" >> $GITHUB_OUTPUT
-
-      - name: Download release artifacts
-        uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v7
         with:
-          pattern: release-*-${{ steps.get_version.outputs.version }}
+          pattern: release-*
           path: artifacts
           merge-multiple: false
 
-      - name: Create GitHub release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+      - name: Show downloaded files
+        run: find artifacts -type f
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
         with:
-          name: Release v${{ steps.get_version.outputs.version }}
-          body: |
-            # Release v${{ steps.get_version.outputs.version }}
-            ## Download the latest release from the [Releases](https://github.com/r41ngee/dota-hero-grid/releases/latest).
-          files: artifacts/*/release.tar.gz
           generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            artifacts/**/*
