@@ -2,6 +2,7 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -38,7 +39,7 @@ jobs:
           cp "$(command -v ffmpeg)" release/
           tar -czvf release.tar.gz release
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: release-${{ matrix.os }}-${{ steps.get_version.outputs.version }}
           path: release.tar.gz
@@ -55,7 +56,7 @@ jobs:
         run: echo "version=$(cargo pkgid | sed 's/.*#//')" >> $GITHUB_OUTPUT
 
       - name: Download release artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           pattern: release-*-${{ steps.get_version.outputs.version }}
           path: artifacts
