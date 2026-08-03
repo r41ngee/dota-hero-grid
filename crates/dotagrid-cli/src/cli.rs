@@ -9,9 +9,17 @@ pub struct Cli {
 
 #[derive(clap::Subcommand)]
 pub enum Action {
-    #[command()]
     Build {
         #[arg(help = "input file")]
         input: String,
-    }
+    },
+    #[cfg(feature = "image")]
+    FromPic {
+        #[arg(help = "input file")]
+        input: String,
+        #[arg(help = "hero name")]
+        grid_name: String,
+    },
+    #[cfg(feature = "dev")]
+    DlVids,
 }
