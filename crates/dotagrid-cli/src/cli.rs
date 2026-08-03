@@ -9,10 +9,6 @@ pub struct Cli {
 
 #[derive(clap::Subcommand)]
 pub enum Action {
-    Build {
-        #[arg(help = "input file")]
-        input: String,
-    },
     FromPic {
         #[arg(help = "input file")]
         input: String,
