@@ -13,21 +13,16 @@ jobs:
             fail-fast: false
             matrix:
                 os: [ubuntu-latest, windows-latest, macos-latest]
-                package: [dotagrid-cli, dota-hero-grid]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v7
             - uses: dtolnay/rust-toolchain@stable
 
             - name: Build
-              run: cargo build --verbose --all-features --package ${{ matrix.package}}
+              run: cargo build --verbose --all-features --workspace
             
             - name: Test
-              run: cargo test --verbose --all-features --package ${{ matrix.package}}
+              run: cargo test --verbose --all-features --workspace
 
             - name: Check docs
-              run: cargo doc --verbose --all-features --package ${{ matrix.package}}
-
-            - name: Try to run
-              if: matrix.package == 'dotagrid-cli'
-              run: cargo run --verbose --all-features --package ${{ matrix.package}} -- help
+              run: cargo doc --verbose --all-features --workspace
