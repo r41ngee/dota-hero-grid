@@ -28,6 +28,16 @@ impl From<crate::GridMap> for SerializableGridMap {
     }
 }
 
+impl Into<crate::GridMap> for SerializableGridMap {
+    fn into(self) -> crate::GridMap {
+        let mut gm = crate::GridMap::new();
+        for grid in self.configs {
+            gm.add_grid(grid.into());
+        }
+        gm
+    }
+}
+
 #[derive(Serialize, Deserialize)]
 struct SerializableGrid {
     config_name: String,
@@ -42,6 +52,16 @@ impl From<crate::Grid> for SerializableGrid {
             config_name: value.name().clone(),
             categories: cats
         }
+    }
+}
+
+impl Into<crate::Grid> for SerializableGrid {
+    fn into(self) -> crate::Grid {
+        let mut grid = crate::Grid::new(&self.config_name);
+        for cat in self.categories {
+            grid.add_category(cat.into());
+        }
+        grid
     }
 }
 
@@ -66,6 +86,21 @@ impl From<Category> for SerializableCategory {
             hero_ids: value.hero_ids().clone(),
         }
     }
+}
+
+impl Into<Category> for SerializableCategory {
+    fn into(self) -> Category {
+        let mut cat = Category::new(
+            &self.category_name,
+            (self.x_position, self.y_position),
+            (self.width, self.height)
+        );
+        for id in self.hero_ids {
+            cat.add_hero_id(id);
+        }
+        cat
+    }
+    
 }
 
 /// Serialize a [`crate::GridMap`] into a JSON string.
@@ -96,6 +131,12 @@ pub fn serialize(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> 
 pub fn serialize_pretty(gridmap: &crate::GridMap) -> Result<String, serde_json::Error> {
     let sgm: SerializableGridMap = gridmap.clone().into();
     serde_json::to_string_pretty(&sgm)
+}
+
+pub fn deserialize(json: &str) -> Result<crate::GridMap, serde_json::Error> {
+    let sgm: SerializableGridMap = serde_json::from_str(json)?;
+    let gm: crate::GridMap = sgm.into();
+    Ok(gm)
 }
 
 #[cfg(test)]
