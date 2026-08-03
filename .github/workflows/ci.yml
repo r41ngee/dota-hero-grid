@@ -19,24 +19,10 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install ffmpeg
-        if: matrix.os != 'windows-latest'
-        run: |
-          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
-            sudo apt-get update
-            sudo apt-get install -y ffmpeg \
-            libavcodec-dev \
-            libavformat-dev \
-            libavutil-dev \
-            libswscale-dev \
-            libswresample-dev \
-            pkg-config
-          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-            brew install ffmpeg pkg-config
-          fi
-
-      - name: Install ffmpeg (windows)
-        if: matrix.os == 'windows-latest'
-        run: choco install ffmpeg pkgconfiglite -y
+        uses: FedericoCarboni/setup-ffmpeg@v3
+        with:
+          ffmpeg-version: release
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: cargo build --verbose --all-features --workspace

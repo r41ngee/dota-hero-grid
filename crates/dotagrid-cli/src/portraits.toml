@@ -1,507 +1,507 @@
-[npc_dota_hero_luna]
-id = 48
-rgb = [67, 59, 74]
-
-[npc_dota_hero_techies]
-id = 105
-rgb = [125, 105, 91]
-
-[npc_dota_hero_ursa]
-id = 70
-rgb = [42, 35, 43]
-
-[npc_dota_hero_templar_assassin]
-id = 46
-rgb = [60, 45, 65]
-
 [npc_dota_hero_bloodseeker]
 id = 4
-rgb = [53, 24, 17]
-
-[npc_dota_hero_dark_willow]
-id = 119
-rgb = [106, 76, 98]
-
-[npc_dota_hero_sand_king]
-id = 16
-rgb = [75, 51, 4]
-
-[npc_dota_hero_silencer]
-id = 75
-rgb = [69, 39, 39]
-
-[npc_dota_hero_pudge]
-id = 14
-rgb = [89, 79, 41]
-
-[npc_dota_hero_arc_warden]
-id = 113
-rgb = [63, 68, 122]
-
-[npc_dota_hero_phantom_assassin]
-id = 44
-rgb = [26, 48, 57]
-
-[npc_dota_hero_obsidian_destroyer]
-id = 76
-rgb = [12, 39, 46]
-
-[npc_dota_hero_life_stealer]
-id = 54
-rgb = [65, 34, 18]
-
-[npc_dota_hero_dazzle]
-id = 50
-rgb = [55, 37, 61]
-
-[npc_dota_hero_brewmaster]
-id = 78
-rgb = [110, 79, 34]
-
-[npc_dota_hero_night_stalker]
-id = 60
-rgb = [8, 42, 82]
-
-[npc_dota_hero_windrunner]
-id = 21
-rgb = [96, 76, 27]
-
-[npc_dota_hero_shadow_demon]
-id = 79
-rgb = [44, 16, 30]
-
-[npc_dota_hero_snapfire]
-id = 128
-rgb = [96, 82, 67]
-
-[npc_dota_hero_lone_druid]
-id = 80
-rgb = [60, 46, 7]
-
-[npc_dota_hero_lich]
-id = 31
-rgb = [32, 48, 68]
-
-[npc_dota_hero_slardar]
-id = 28
-rgb = [49, 63, 102]
-
-[npc_dota_hero_antimage]
-id = 1
-rgb = [100, 60, 110]
-
-[npc_dota_hero_lina]
-id = 25
-rgb = [104, 44, 31]
-
-[npc_dota_hero_bane]
-id = 3
-rgb = [42, 31, 66]
-
-[npc_dota_hero_oracle]
-id = 111
-rgb = [83, 86, 78]
-
-[npc_dota_hero_clinkz]
-id = 56
-rgb = [63, 33, 17]
-
-[npc_dota_hero_death_prophet]
-id = 43
-rgb = [69, 88, 75]
-
-[npc_dota_hero_medusa]
-id = 94
-rgb = [34, 49, 38]
-
-[npc_dota_hero_doom_bringer]
-id = 69
-rgb = [63, 29, 15]
-
-[npc_dota_hero_wisp]
-id = 91
-rgb = [61, 73, 104]
-
-[npc_dota_hero_axe]
-id = 2
-rgb = [48, 21, 21]
-
-[npc_dota_hero_lion]
-id = 26
-rgb = [80, 41, 28]
-
-[npc_dota_hero_tidehunter]
-id = 29
-rgb = [7, 70, 56]
-
-[npc_dota_hero_puck]
-id = 13
-rgb = [58, 77, 132]
-
-[npc_dota_hero_earth_spirit]
-id = 107
-rgb = [62, 60, 41]
-
-[npc_dota_hero_naga_siren]
-id = 89
-rgb = [89, 109, 92]
-
-[npc_dota_hero_huskar]
-id = 59
-rgb = [90, 70, 50]
-
-[npc_dota_hero_tusk]
-id = 100
-rgb = [109, 109, 116]
-
-[npc_dota_hero_tinker]
-id = 34
-rgb = [74, 57, 46]
-
-[npc_dota_hero_alchemist]
-id = 73
-rgb = [53, 38, 42]
-
-[npc_dota_hero_visage]
-id = 92
-rgb = [38, 62, 74]
-
-[npc_dota_hero_chaos_knight]
-id = 81
-rgb = [54, 25, 12]
-
-[npc_dota_hero_vengefulspirit]
-id = 20
-rgb = [55, 76, 118]
-
-[npc_dota_hero_nevermore]
-id = 11
-rgb = [41, 13, 12]
-
-[npc_dota_hero_keeper_of_the_light]
-id = 90
-rgb = [122, 102, 72]
-
-[npc_dota_hero_warlock]
-id = 37
-rgb = [65, 35, 33]
-
-[npc_dota_hero_broodmother]
-id = 61
-rgb = [43, 36, 46]
-
-[npc_dota_hero_abyssal_underlord]
-id = 108
-rgb = [54, 57, 66]
-
-[npc_dota_hero_earthshaker]
-id = 7
-rgb = [78, 40, 17]
-
-[npc_dota_hero_winter_wyvern]
-id = 112
-rgb = [65, 110, 128]
-
-[npc_dota_hero_grimstroke]
-id = 121
-rgb = [69, 58, 47]
-
-[npc_dota_hero_legion_commander]
-id = 104
-rgb = [99, 74, 65]
-
-[npc_dota_hero_elder_titan]
-id = 103
-rgb = [67, 48, 38]
-
-[npc_dota_hero_hoodwink]
-id = 123
-rgb = [72, 64, 22]
-
-[npc_dota_hero_weaver]
-id = 63
-rgb = [21, 33, 37]
-
-[npc_dota_hero_pangolier]
-id = 120
-rgb = [147, 116, 119]
-
-[npc_dota_hero_lycan]
-id = 77
-rgb = [29, 30, 26]
-
-[npc_dota_hero_mars]
-id = 129
-rgb = [105, 39, 22]
-
-[npc_dota_hero_primal_beast]
-id = 137
-rgb = [112, 81, 63]
-
-[npc_dota_hero_dragon_knight]
-id = 49
-rgb = [62, 32, 23]
-
-[npc_dota_hero_phoenix]
-id = 110
-rgb = [150, 100, 71]
-
-[npc_dota_hero_witch_doctor]
-id = 30
-rgb = [43, 40, 56]
-
-[npc_dota_hero_bounty_hunter]
-id = 62
-rgb = [96, 48, 22]
-
-[npc_dota_hero_enigma]
-id = 33
-rgb = [53, 51, 158]
-
-[npc_dota_hero_meepo]
-id = 82
-rgb = [67, 60, 59]
-
-[npc_dota_hero_omniknight]
-id = 57
-rgb = [125, 92, 72]
-
-[npc_dota_hero_shadow_shaman]
-id = 27
-rgb = [38, 32, 32]
-
-[npc_dota_hero_centaur]
-id = 96
-rgb = [47, 35, 32]
-
-[npc_dota_hero_void_spirit]
-id = 126
-rgb = [102, 80, 119]
-
-[npc_dota_hero_mirana]
-id = 9
-rgb = [53, 79, 105]
-
-[npc_dota_hero_skeleton_king]
-id = 42
-rgb = [32, 59, 32]
-
-[npc_dota_hero_enchantress]
-id = 58
-rgb = [102, 77, 44]
-
-[npc_dota_hero_venomancer]
-id = 40
-rgb = [54, 51, 11]
-
-[npc_dota_hero_zuus]
-id = 22
-rgb = [53, 99, 119]
-
-[npc_dota_hero_storm_spirit]
-id = 17
-rgb = [49, 93, 127]
-
-[npc_dota_hero_shredder]
-id = 98
-rgb = [69, 61, 53]
-
-[npc_dota_hero_kez]
-id = 145
-rgb = [93, 96, 86]
-
-[npc_dota_hero_slark]
-id = 93
-rgb = [76, 68, 67]
-
-[npc_dota_hero_kunkka]
-id = 23
-rgb = [61, 74, 78]
-
-[npc_dota_hero_sven]
-id = 18
-rgb = [27, 43, 56]
-
-[npc_dota_hero_viper]
-id = 47
-rgb = [15, 48, 53]
-
-[npc_dota_hero_necrolyte]
-id = 36
-rgb = [55, 104, 55]
-
-[npc_dota_hero_batrider]
-id = 65
-rgb = [96, 55, 25]
-
-[npc_dota_hero_ancient_apparition]
-id = 68
-rgb = [59, 118, 184]
-
-[npc_dota_hero_dawnbreaker]
-id = 135
-rgb = [179, 142, 80]
-
-[npc_dota_hero_troll_warlord]
-id = 95
-rgb = [88, 56, 42]
-
-[npc_dota_hero_terrorblade]
-id = 109
-rgb = [35, 53, 69]
-
-[npc_dota_hero_invoker]
-id = 74
-rgb = [84, 53, 41]
-
-[npc_dota_hero_leshrac]
-id = 52
-rgb = [35, 74, 83]
-
-[npc_dota_hero_marci]
-id = 136
-rgb = [97, 75, 55]
-
-[npc_dota_hero_spectre]
-id = 67
-rgb = [11, 12, 36]
-
-[npc_dota_hero_razor]
-id = 15
-rgb = [3, 50, 80]
-
-[npc_dota_hero_pugna]
-id = 45
-rgb = [63, 91, 15]
-
-[npc_dota_hero_morphling]
-id = 10
-rgb = [34, 103, 116]
-
-[npc_dota_hero_drow_ranger]
-id = 6
-rgb = [61, 68, 89]
-
-[npc_dota_hero_abaddon]
-id = 102
-rgb = [30, 34, 87]
-
-[npc_dota_hero_furion]
-id = 53
-rgb = [30, 50, 37]
-
-[npc_dota_hero_faceless_void]
-id = 41
-rgb = [59, 43, 89]
-
-[npc_dota_hero_queenofpain]
-id = 39
-rgb = [56, 36, 43]
-
-[npc_dota_hero_chen]
-id = 66
-rgb = [111, 111, 93]
-
-[npc_dota_hero_dark_seer]
-id = 55
-rgb = [43, 27, 74]
-
-[npc_dota_hero_ember_spirit]
-id = 106
-rgb = [102, 42, 27]
-
-[npc_dota_hero_muerta]
-id = 138
-rgb = [106, 114, 79]
-
-[npc_dota_hero_juggernaut]
-id = 8
-rgb = [116, 90, 63]
-
-[npc_dota_hero_crystal_maiden]
-id = 5
-rgb = [82, 99, 119]
-
-[npc_dota_hero_undying]
-id = 85
-rgb = [45, 59, 45]
-
-[npc_dota_hero_tiny]
-id = 19
-rgb = [60, 71, 75]
-
-[npc_dota_hero_sniper]
-id = 35
-rgb = [95, 87, 86]
-
-[npc_dota_hero_jakiro]
-id = 64
-rgb = [42, 33, 47]
-
-[npc_dota_hero_ringmaster]
-id = 131
-rgb = [88, 68, 41]
-
-[npc_dota_hero_rattletrap]
-id = 51
-rgb = [85, 58, 44]
+rgb = [53, 25, 17]
 
 [npc_dota_hero_monkey_king]
 id = 114
-rgb = [85, 78, 81]
+rgb = [86, 79, 82]
 
-[npc_dota_hero_spirit_breaker]
-id = 71
-rgb = [58, 81, 91]
+[npc_dota_hero_dazzle]
+id = 50
+rgb = [54, 37, 60]
+
+[npc_dota_hero_terrorblade]
+id = 109
+rgb = [35, 53, 70]
+
+[npc_dota_hero_elder_titan]
+id = 103
+rgb = [64, 46, 35]
+
+[npc_dota_hero_viper]
+id = 47
+rgb = [16, 50, 54]
+
+[npc_dota_hero_vengefulspirit]
+id = 20
+rgb = [55, 79, 121]
+
+[npc_dota_hero_mirana]
+id = 9
+rgb = [52, 77, 102]
+
+[npc_dota_hero_death_prophet]
+id = 43
+rgb = [68, 89, 75]
+
+[npc_dota_hero_bane]
+id = 3
+rgb = [41, 31, 64]
+
+[npc_dota_hero_shadow_shaman]
+id = 27
+rgb = [39, 34, 33]
+
+[npc_dota_hero_marci]
+id = 136
+rgb = [96, 76, 55]
+
+[npc_dota_hero_shredder]
+id = 98
+rgb = [69, 61, 52]
+
+[npc_dota_hero_void_spirit]
+id = 126
+rgb = [101, 81, 119]
+
+[npc_dota_hero_naga_siren]
+id = 89
+rgb = [81, 106, 94]
+
+[npc_dota_hero_windrunner]
+id = 21
+rgb = [96, 77, 27]
+
+[npc_dota_hero_lycan]
+id = 77
+rgb = [28, 34, 30]
+
+[npc_dota_hero_abaddon]
+id = 102
+rgb = [28, 33, 83]
+
+[npc_dota_hero_phantom_lancer]
+id = 12
+rgb = [57, 59, 57]
+
+[npc_dota_hero_oracle]
+id = 111
+rgb = [86, 90, 81]
+
+[npc_dota_hero_centaur]
+id = 96
+rgb = [43, 34, 32]
+
+[npc_dota_hero_ember_spirit]
+id = 106
+rgb = [100, 41, 26]
+
+[npc_dota_hero_tiny]
+id = 19
+rgb = [58, 70, 71]
+
+[npc_dota_hero_warlock]
+id = 37
+rgb = [62, 31, 27]
+
+[npc_dota_hero_juggernaut]
+id = 8
+rgb = [112, 87, 60]
+
+[npc_dota_hero_lina]
+id = 25
+rgb = [103, 45, 31]
+
+[npc_dota_hero_chen]
+id = 66
+rgb = [111, 112, 93]
+
+[npc_dota_hero_sven]
+id = 18
+rgb = [23, 40, 53]
+
+[npc_dota_hero_venomancer]
+id = 40
+rgb = [55, 52, 13]
+
+[npc_dota_hero_disruptor]
+id = 87
+rgb = [33, 53, 70]
+
+[npc_dota_hero_kez]
+id = 145
+rgb = [88, 96, 88]
 
 [npc_dota_hero_nyx_assassin]
 id = 88
-rgb = [44, 41, 35]
-
-[npc_dota_hero_beastmaster]
-id = 38
-rgb = [65, 37, 18]
-
-[npc_dota_hero_riki]
-id = 32
-rgb = [48, 51, 99]
-
-[npc_dota_hero_treant]
-id = 83
-rgb = [36, 56, 26]
+rgb = [41, 40, 33]
 
 [npc_dota_hero_ogre_magi]
 id = 84
 rgb = [75, 66, 70]
 
-[npc_dota_hero_phantom_lancer]
-id = 12
-rgb = [62, 63, 62]
+[npc_dota_hero_rattletrap]
+id = 51
+rgb = [86, 61, 46]
 
-[npc_dota_hero_largo]
-id = 155
-rgb = [77, 80, 54]
+[npc_dota_hero_obsidian_destroyer]
+id = 76
+rgb = [12, 40, 47]
 
-[npc_dota_hero_gyrocopter]
-id = 72
-rgb = [90, 91, 75]
+[npc_dota_hero_lone_druid]
+id = 80
+rgb = [58, 48, 8]
 
-[npc_dota_hero_skywrath_mage]
-id = 101
-rgb = [123, 107, 98]
+[npc_dota_hero_kunkka]
+id = 23
+rgb = [60, 73, 76]
+
+[npc_dota_hero_omniknight]
+id = 57
+rgb = [122, 91, 71]
+
+[npc_dota_hero_huskar]
+id = 59
+rgb = [88, 73, 53]
+
+[npc_dota_hero_wisp]
+id = 91
+rgb = [64, 80, 110]
+
+[npc_dota_hero_bounty_hunter]
+id = 62
+rgb = [91, 48, 22]
 
 [npc_dota_hero_bristleback]
 id = 99
-rgb = [73, 47, 13]
+rgb = [71, 46, 14]
+
+[npc_dota_hero_dawnbreaker]
+id = 135
+rgb = [172, 137, 78]
+
+[npc_dota_hero_undying]
+id = 85
+rgb = [44, 61, 46]
+
+[npc_dota_hero_razor]
+id = 15
+rgb = [6, 51, 80]
+
+[npc_dota_hero_puck]
+id = 13
+rgb = [56, 74, 130]
+
+[npc_dota_hero_hoodwink]
+id = 123
+rgb = [79, 71, 27]
+
+[npc_dota_hero_treant]
+id = 83
+rgb = [36, 57, 26]
+
+[npc_dota_hero_arc_warden]
+id = 113
+rgb = [64, 73, 131]
+
+[npc_dota_hero_medusa]
+id = 94
+rgb = [40, 55, 38]
+
+[npc_dota_hero_weaver]
+id = 63
+rgb = [21, 37, 40]
+
+[npc_dota_hero_visage]
+id = 92
+rgb = [33, 55, 65]
+
+[npc_dota_hero_invoker]
+id = 74
+rgb = [84, 54, 41]
+
+[npc_dota_hero_brewmaster]
+id = 78
+rgb = [111, 81, 34]
+
+[npc_dota_hero_spectre]
+id = 67
+rgb = [10, 12, 33]
+
+[npc_dota_hero_silencer]
+id = 75
+rgb = [68, 40, 40]
+
+[npc_dota_hero_sand_king]
+id = 16
+rgb = [73, 50, 9]
+
+[npc_dota_hero_pugna]
+id = 45
+rgb = [64, 94, 15]
+
+[npc_dota_hero_faceless_void]
+id = 41
+rgb = [60, 44, 90]
+
+[npc_dota_hero_winter_wyvern]
+id = 112
+rgb = [64, 110, 128]
+
+[npc_dota_hero_batrider]
+id = 65
+rgb = [96, 56, 28]
+
+[npc_dota_hero_meepo]
+id = 82
+rgb = [64, 57, 55]
+
+[npc_dota_hero_snapfire]
+id = 128
+rgb = [102, 94, 82]
+
+[npc_dota_hero_witch_doctor]
+id = 30
+rgb = [42, 40, 55]
+
+[npc_dota_hero_earth_spirit]
+id = 107
+rgb = [62, 62, 42]
+
+[npc_dota_hero_pudge]
+id = 14
+rgb = [90, 80, 42]
+
+[npc_dota_hero_enchantress]
+id = 58
+rgb = [102, 78, 44]
+
+[npc_dota_hero_lion]
+id = 26
+rgb = [79, 42, 29]
+
+[npc_dota_hero_ursa]
+id = 70
+rgb = [43, 38, 45]
+
+[npc_dota_hero_ringmaster]
+id = 131
+rgb = [85, 66, 40]
+
+[npc_dota_hero_antimage]
+id = 1
+rgb = [99, 60, 108]
+
+[npc_dota_hero_slardar]
+id = 28
+rgb = [46, 61, 97]
+
+[npc_dota_hero_tidehunter]
+id = 29
+rgb = [7, 69, 55]
+
+[npc_dota_hero_skeleton_king]
+id = 42
+rgb = [31, 61, 32]
+
+[npc_dota_hero_tinker]
+id = 34
+rgb = [77, 62, 50]
+
+[npc_dota_hero_lich]
+id = 31
+rgb = [32, 50, 70]
+
+[npc_dota_hero_grimstroke]
+id = 121
+rgb = [66, 57, 46]
 
 [npc_dota_hero_magnataur]
 id = 97
-rgb = [34, 44, 48]
+rgb = [34, 46, 50]
+
+[npc_dota_hero_crystal_maiden]
+id = 5
+rgb = [81, 99, 118]
+
+[npc_dota_hero_doom_bringer]
+id = 69
+rgb = [63, 29, 15]
 
 [npc_dota_hero_rubick]
 id = 86
-rgb = [41, 50, 35]
+rgb = [39, 49, 35]
 
-[npc_dota_hero_disruptor]
-id = 87
-rgb = [32, 49, 67]
+[npc_dota_hero_tusk]
+id = 100
+rgb = [105, 106, 112]
+
+[npc_dota_hero_skywrath_mage]
+id = 101
+rgb = [126, 115, 109]
+
+[npc_dota_hero_shadow_demon]
+id = 79
+rgb = [44, 16, 29]
+
+[npc_dota_hero_phantom_assassin]
+id = 44
+rgb = [25, 48, 56]
+
+[npc_dota_hero_abyssal_underlord]
+id = 108
+rgb = [53, 56, 65]
+
+[npc_dota_hero_templar_assassin]
+id = 46
+rgb = [59, 45, 64]
+
+[npc_dota_hero_axe]
+id = 2
+rgb = [53, 23, 22]
+
+[npc_dota_hero_troll_warlord]
+id = 95
+rgb = [90, 56, 40]
+
+[npc_dota_hero_zuus]
+id = 22
+rgb = [54, 101, 121]
+
+[npc_dota_hero_mars]
+id = 129
+rgb = [104, 40, 21]
+
+[npc_dota_hero_clinkz]
+id = 56
+rgb = [64, 35, 16]
+
+[npc_dota_hero_legion_commander]
+id = 104
+rgb = [98, 75, 65]
+
+[npc_dota_hero_furion]
+id = 53
+rgb = [29, 51, 38]
+
+[npc_dota_hero_gyrocopter]
+id = 72
+rgb = [89, 90, 72]
+
+[npc_dota_hero_primal_beast]
+id = 137
+rgb = [112, 79, 60]
+
+[npc_dota_hero_morphling]
+id = 10
+rgb = [34, 107, 118]
+
+[npc_dota_hero_sniper]
+id = 35
+rgb = [95, 90, 89]
+
+[npc_dota_hero_techies]
+id = 105
+rgb = [124, 105, 89]
+
+[npc_dota_hero_queenofpain]
+id = 39
+rgb = [55, 37, 44]
+
+[npc_dota_hero_riki]
+id = 32
+rgb = [48, 54, 101]
+
+[npc_dota_hero_leshrac]
+id = 52
+rgb = [36, 78, 86]
+
+[npc_dota_hero_keeper_of_the_light]
+id = 90
+rgb = [121, 102, 70]
+
+[npc_dota_hero_luna]
+id = 48
+rgb = [67, 60, 74]
+
+[npc_dota_hero_chaos_knight]
+id = 81
+rgb = [53, 25, 12]
+
+[npc_dota_hero_dark_seer]
+id = 55
+rgb = [42, 28, 68]
+
+[npc_dota_hero_enigma]
+id = 33
+rgb = [52, 51, 154]
+
+[npc_dota_hero_necrolyte]
+id = 36
+rgb = [55, 107, 56]
+
+[npc_dota_hero_ancient_apparition]
+id = 68
+rgb = [59, 118, 186]
+
+[npc_dota_hero_slark]
+id = 93
+rgb = [76, 72, 70]
+
+[npc_dota_hero_jakiro]
+id = 64
+rgb = [41, 34, 46]
+
+[npc_dota_hero_night_stalker]
+id = 60
+rgb = [8, 45, 84]
+
+[npc_dota_hero_dragon_knight]
+id = 49
+rgb = [58, 30, 22]
+
+[npc_dota_hero_life_stealer]
+id = 54
+rgb = [67, 36, 19]
+
+[npc_dota_hero_broodmother]
+id = 61
+rgb = [42, 36, 45]
+
+[npc_dota_hero_storm_spirit]
+id = 17
+rgb = [51, 96, 130]
+
+[npc_dota_hero_alchemist]
+id = 73
+rgb = [52, 39, 42]
+
+[npc_dota_hero_dark_willow]
+id = 119
+rgb = [101, 70, 89]
+
+[npc_dota_hero_phoenix]
+id = 110
+rgb = [151, 105, 73]
+
+[npc_dota_hero_drow_ranger]
+id = 6
+rgb = [59, 67, 87]
+
+[npc_dota_hero_muerta]
+id = 138
+rgb = [108, 113, 77]
+
+[npc_dota_hero_spirit_breaker]
+id = 71
+rgb = [57, 84, 94]
+
+[npc_dota_hero_beastmaster]
+id = 38
+rgb = [65, 39, 19]
+
+[npc_dota_hero_earthshaker]
+id = 7
+rgb = [76, 40, 17]
+
+[npc_dota_hero_pangolier]
+id = 120
+rgb = [145, 115, 117]
+
+[npc_dota_hero_largo]
+id = 155
+rgb = [76, 81, 53]
+
+[npc_dota_hero_nevermore]
+id = 11
+rgb = [46, 14, 13]

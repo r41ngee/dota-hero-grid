@@ -1,4 +1,5 @@
 use clap::Parser;
+#[cfg(feature = "dev")]
 use std::fs;
 use std::io::Write;
 use dota_hero_grid::*;
@@ -54,33 +55,50 @@ fn main() -> Result<(), anyhow::Error> {
                 }
 
                 let file_str = format!("{}{}.webm", path, hero.name);
-                let mut unbundler = unbundle::MediaFile::open(file_str)?;
-                let frame = unbundler.video().frame(30)?;
+                let output = std::process::Command::new("ffmpeg")
+                    .args([
+                        "-hide_banner",
+                        "-loglevel",
+                        "error",
+                        "-i",
+                        &file_str,
+                        "-vf",
+                        "scale=8:8",
+                        "-f",
+                        "rawvideo",
+                        "-pix_fmt",
+                        "rgb24",
+                        "-",
+                    ])
+                    .output()?;
 
-                let mut pixels: Vec<Vec<u8>> = Vec::with_capacity(256_usize.pow(2));
-                
-                for x in 0..256 { for y in 0..256 {
-                    use image::GenericImageView;
+                if !output.status.success() {
+                    anyhow::bail!(
+                        "ffmpeg failed for {}: {}",
+                        hero.name,
+                        String::from_utf8_lossy(&output.stderr)
+                    );
+                }
 
-                    let rgb = frame.get_pixel(x, y);
-                    pixels.push(vec![rgb[0], rgb[1], rgb[2]]);
-                }}
+                let total = (output.stdout.len() / 3) as u64;
+                if total == 0 {
+                    anyhow::bail!("no frames extracted for {}", hero.name);
+                }
 
-                let hero_pixels = dev::HeroPortraitPixels {
+                let mut sums = [0u64; 3];
+                for (i, b) in output.stdout.iter().enumerate() {
+                    sums[i % 3] += *b as u64;
+                }
+
+                hpps.insert(hero.name.clone(), dev::HeroPortraitPixels {
                     id: hero.id,
-                    rgb: vec![
-                        (pixels.iter().map(|x| x[0] as u64).sum::<u64>() / pixels.len() as u64) as u8,
-                        (pixels.iter().map(|x| x[1] as u64).sum::<u64>() / pixels.len() as u64) as u8,
-                        (pixels.iter().map(|x| x[2] as u64).sum::<u64>() / pixels.len() as u64) as u8,
-                    ],
-                };
-                hpps.insert(hero.name.clone(), hero_pixels);
+                    rgb: sums.map(|s| (s / total) as u8).to_vec(),
+                });
             }
 
             let output_path = "crates/dotagrid-cli/src/portraits.toml";
             let toml_str = toml::to_string(&hpps)?;
-            let mut ofile = fs::File::create(&output_path)?;
-            ofile.write_all(toml_str.as_bytes())?;
+            fs::write(output_path, toml_str)?;
 
             None
         }
