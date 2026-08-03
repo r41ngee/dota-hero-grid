@@ -1,9 +1,15 @@
+#[cfg(target_os = "windows")]
+const DEFAULT_CONFIG_PATH: &str = "Steam/userdata/{your_steam_id}/570/remote/dota_hero_grid_config.json";
+
+#[cfg(target_os = "linux")]
+const DEFAULT_CONFIG_PATH: &str = "~/.steam/steam/userdata/{your_steam_id}/570/remote/dota_hero_grid_config.json";
+
 #[derive(clap::Parser)]
 pub struct Cli {
     #[arg(short, help = "output file")]
     pub output: Option<String>,
 
-    #[arg(short, long, help = "add to existing config")]
+    #[arg(short, long, help = format!("add to existing config (default path is {}", DEFAULT_CONFIG_PATH))]
     pub add_to: Option<String>,
 
     #[command(subcommand)]
