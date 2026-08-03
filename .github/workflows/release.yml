@@ -25,10 +25,7 @@ jobs:
         run: echo "version=$(cargo pkgid | sed 's/.*#//')" >> $GITHUB_OUTPUT
 
       - name: Install ffmpeg
-        uses: FedericoCarboni/setup-ffmpeg@v3
-        with:
-          ffmpeg-version: release
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: AnimMouse/setup-ffmpeg@v1
 
       - name: Build
         run: cargo build --release --all-features --package dotagrid-cli
