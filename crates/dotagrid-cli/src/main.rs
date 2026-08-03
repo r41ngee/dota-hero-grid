@@ -24,7 +24,6 @@ fn main() -> Result<(), anyhow::Error> {
             let mut ofile = fs::File::create(&output_path)?;
             ofile.write_all(json_gm.as_bytes())?;
         },
-        #[cfg(feature = "image")]
         cli::Action::FromPic { input, grid_name } => {
             const GRID_PIC_SIZE: (u32, u32) = (128, 32);
 

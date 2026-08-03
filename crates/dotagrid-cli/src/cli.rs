@@ -13,7 +13,6 @@ pub enum Action {
         #[arg(help = "input file")]
         input: String,
     },
-    #[cfg(feature = "image")]
     FromPic {
         #[arg(help = "input file")]
         input: String,
