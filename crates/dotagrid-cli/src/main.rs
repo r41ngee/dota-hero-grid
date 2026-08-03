@@ -12,17 +12,17 @@ fn main() -> Result<(), anyhow::Error> {
     let args = cli::Cli::parse();
 
     let grid = match &args.action {
-        cli::Action::FromPic { input, grid_name } => {
-            const GRID_PIC_SIZE: (u32, u32) = (256, 64);
+        cli::Action::FromPic { input, grid_name, x, y } => {
+            let grid_hero_size = (*x, *y);
 
             let mut grid = Grid::new(grid_name);
             let mut cat = Category::new("", (0.0, 0.0), (1200.0, 800.0));
 
             let img = image::open(input)?;
-            let img = img.resize_exact(GRID_PIC_SIZE.0, GRID_PIC_SIZE.1, image::imageops::FilterType::Nearest);
+            let img = img.resize_exact(grid_hero_size.0, grid_hero_size.1, image::imageops::FilterType::Nearest);
 
-            for x in 0..GRID_PIC_SIZE.0 {
-                for y in 0..GRID_PIC_SIZE.1 {
+            for x in 0..grid_hero_size.0 {
+                for y in 0..grid_hero_size.1 {
                     use image::GenericImageView;
 
                     let rgb = img.get_pixel(x, y);

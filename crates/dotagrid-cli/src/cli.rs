@@ -17,6 +17,11 @@ pub enum Action {
         input: String,
         #[arg(help = "hero name", default_value = "")]
         grid_name: String,
+
+        #[arg(short, long, help = "grid width in heroes", default_value_t = 256)]
+        x: u32,
+        #[arg(short, long, help = "grid height in heroes", default_value_t = 64)]
+        y: u32,
     },
     #[cfg(feature = "dev")]
     DlVids,
