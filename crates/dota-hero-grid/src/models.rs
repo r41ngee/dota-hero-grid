@@ -132,6 +132,10 @@ impl Category {
         self.hero_ids.push(id);
         Some(())
     }
+
+    pub fn add_hero_id(&mut self, hero_id: u32) {
+        self.hero_ids.push(hero_id);
+    }
 }
 
 #[cfg(test)]
