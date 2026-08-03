@@ -1,7 +1,7 @@
 #[cfg(target_os = "windows")]
 const DEFAULT_CONFIG_PATH: &str = "Steam/userdata/{your_steam_id}/570/remote/dota_hero_grid_config.json";
 
-#[cfg(target_os = "linux")]
+#[cfg(any(target_os = "linux", target_os = "macos"))]
 const DEFAULT_CONFIG_PATH: &str = "~/.steam/steam/userdata/{your_steam_id}/570/remote/dota_hero_grid_config.json";
 
 #[derive(clap::Parser)]
