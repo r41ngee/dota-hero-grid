@@ -27,7 +27,7 @@ jobs:
         id: version
         shell: bash
         run: |
-          echo "version=$(cargo pkgid | sed 's/.*#//')" >> "$GITHUB_OUTPUT"
+          echo "version=$(cargo pkgid --package dotagrid-cli | sed 's/.*#//')" >> "$GITHUB_OUTPUT"
 
       - name: Install FFmpeg
         uses: AnimMouse/setup-ffmpeg@v1
