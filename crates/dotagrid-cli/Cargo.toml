@@ -1,7 +1,7 @@
 [package]
 name = "dotagrid-cli"
 description = "Data types and recursive layout for Dota 2 hero grid configurations"
-version = "0.3.1"
+version = "0.3.2"
 edition = "2024"
 license = "MIT"
 rust-version = "1.85"
@@ -11,7 +11,7 @@ repository = "https://github.com/r41ngee/dota-hero-grid"
 anyhow = "1.0.104"
 clap = { version = "4.6.4", features = ["derive"] }
 dota-hero-grid = { version = "0.1.4", path = "../dota-hero-grid" }
-image = { version = "0.25.9", default-features = false, features = ["gif", "ico", "jpeg", "png", "webp"] }
+image = { version = "0.25.10", default-features = false, features = ["gif", "ico", "jpeg", "png", "webp"] }
 serde = { version = "1.0.229", features = ["derive"] }
 toml = { version = "1.1.4", features = ["parse"] }
 
