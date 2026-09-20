@@ -137,7 +137,7 @@ fn get_nearest_id(rgb: (u8, u8, u8)) -> Result<i64, anyhow::Error> {
     let mut nearest_id = 0;
     let mut nearest_dist = f64::MAX;
 
-    for (_, hpp) in hpps.iter() {
+    for hpp in hpps.values() {
         let dist = ((hpp.rgb[0] as f64 - rgb.0 as f64).powi(2)
             + (hpp.rgb[1] as f64 - rgb.1 as f64).powi(2)
             + (hpp.rgb[2] as f64 - rgb.2 as f64).powi(2)).sqrt();
