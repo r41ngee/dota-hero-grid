@@ -116,13 +116,13 @@ fn main() -> Result<(), anyhow::Error> {
 
             map.add_grid(grid);
             let mut file = std::fs::File::open(&add_to)?;
-            file.write(serialize(&map)?.as_bytes())?;
+            file.write_all(serialize(&map)?.as_bytes())?;
         } else {
             let mut map = dota_hero_grid::GridMap::new();
             map.add_grid(grid);
             let output_path = args.output.unwrap_or("hero_grid_config.json".to_string());
             let mut output_file = std::fs::File::create(&output_path)?;
-            output_file.write(serialize_pretty(&map)?.as_bytes())?;
+            output_file.write_all(serialize_pretty(&map)?.as_bytes())?;
         }
     }
 
