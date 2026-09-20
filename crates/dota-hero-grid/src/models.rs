@@ -38,6 +38,12 @@ impl GridMap {
     }
 }
 
+impl Default for GridMap {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 /// A named collection of [`Category`] entries forming one grid layout.
 ///
 /// # Example
