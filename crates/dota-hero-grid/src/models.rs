@@ -5,6 +5,7 @@
 
 use getset::Setters;
 use derive_getters::Getters;
+use rdotaconstants::Entity;
 
 /// Top-level container for multiple hero grid configurations.
 ///
@@ -133,8 +134,8 @@ impl Category {
             Cow::Owned(format!("{}{}", HERO_PREFIX, hero_name))
         };
 
-        let hero = rdotaconstants::Hero::get(&true_hero_name)?;
-        let id = hero.id as u32;
+        let hero = rdotaconstants::Hero::new(&true_hero_name)?;
+        let id = hero.id() as u32;
         self.hero_ids.push(id);
         Some(())
     }
