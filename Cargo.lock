@@ -168,7 +168,7 @@ dependencies = [
 
 [[package]]
 name = "dota-hero-grid"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "derive-getters",
  "getset",
@@ -179,7 +179,7 @@ dependencies = [
 
 [[package]]
 name = "dotagrid-cli"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
  "anyhow",
  "clap",
