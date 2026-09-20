@@ -116,13 +116,13 @@ fn main() -> Result<(), anyhow::Error> {
 
             map.add_grid(grid);
             let mut file = std::fs::File::open(&add_to)?;
-            file.write(serialize(&map)?.as_bytes())?;
+            file.write_all(serialize(&map)?.as_bytes())?;
         } else {
             let mut map = dota_hero_grid::GridMap::new();
             map.add_grid(grid);
             let output_path = args.output.unwrap_or("hero_grid_config.json".to_string());
             let mut output_file = std::fs::File::create(&output_path)?;
-            output_file.write(serialize_pretty(&map)?.as_bytes())?;
+            output_file.write_all(serialize_pretty(&map)?.as_bytes())?;
         }
     }
 
@@ -137,7 +137,7 @@ fn get_nearest_id(rgb: (u8, u8, u8)) -> Result<i64, anyhow::Error> {
     let mut nearest_id = 0;
     let mut nearest_dist = f64::MAX;
 
-    for (_, hpp) in hpps.iter() {
+    for hpp in hpps.values() {
         let dist = ((hpp.rgb[0] as f64 - rgb.0 as f64).powi(2)
             + (hpp.rgb[1] as f64 - rgb.1 as f64).powi(2)
             + (hpp.rgb[2] as f64 - rgb.2 as f64).powi(2)).sqrt();
