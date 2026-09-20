@@ -28,10 +28,10 @@ impl From<crate::GridMap> for SerializableGridMap {
     }
 }
 
-impl Into<crate::GridMap> for SerializableGridMap {
-    fn into(self) -> crate::GridMap {
+impl From<SerializableGridMap> for crate::GridMap {
+    fn from(val: SerializableGridMap) -> Self {
         let mut gm = crate::GridMap::new();
-        for grid in self.configs {
+        for grid in val.configs {
             gm.add_grid(grid.into());
         }
         gm
@@ -55,10 +55,10 @@ impl From<crate::Grid> for SerializableGrid {
     }
 }
 
-impl Into<crate::Grid> for SerializableGrid {
-    fn into(self) -> crate::Grid {
-        let mut grid = crate::Grid::new(&self.config_name);
-        for cat in self.categories {
+impl From<SerializableGrid> for crate::Grid {
+    fn from(val: SerializableGrid) -> Self {
+        let mut grid = crate::Grid::new(&val.config_name);
+        for cat in val.categories {
             grid.add_category(cat.into());
         }
         grid
@@ -88,14 +88,14 @@ impl From<Category> for SerializableCategory {
     }
 }
 
-impl Into<Category> for SerializableCategory {
-    fn into(self) -> Category {
+impl From<SerializableCategory> for Category {
+    fn from(val: SerializableCategory) -> Self {
         let mut cat = Category::new(
-            &self.category_name,
-            (self.x_position, self.y_position),
-            (self.width, self.height)
+            &val.category_name,
+            (val.x_position, val.y_position),
+            (val.width, val.height)
         );
-        for id in self.hero_ids {
+        for id in val.hero_ids {
             cat.add_hero_id(id);
         }
         cat
