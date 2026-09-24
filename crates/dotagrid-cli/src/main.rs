@@ -4,6 +4,7 @@ use std::fs;
 use std::io::Write;
 use dota_hero_grid::*;
 use std::collections::HashMap;
+use rdotaconstants::Entity;
 
 mod cli;
 
@@ -50,11 +51,11 @@ fn main() -> Result<(), anyhow::Error> {
                     "npc_dota_hero_target_dummy",
                 ];
 
-                if DODGE_LIST.contains(&hero.name.as_str()) {
+                if DODGE_LIST.contains(&hero.name()) {
                     continue;
                 }
 
-                let file_str = format!("{}{}.webm", path, hero.name);
+                let file_str = format!("{}{}.webm", path, hero.name());
                 let output = std::process::Command::new("ffmpeg")
                     .args([
                         "-hide_banner",
@@ -75,14 +76,14 @@ fn main() -> Result<(), anyhow::Error> {
                 if !output.status.success() {
                     anyhow::bail!(
                         "ffmpeg failed for {}: {}",
-                        hero.name,
+                        hero.name(),
                         String::from_utf8_lossy(&output.stderr)
                     );
                 }
 
                 let total = (output.stdout.len() / 3) as u64;
                 if total == 0 {
-                    anyhow::bail!("no frames extracted for {}", hero.name);
+                    anyhow::bail!("no frames extracted for {}", hero.name());
                 }
 
                 let mut sums = [0u64; 3];
@@ -90,8 +91,8 @@ fn main() -> Result<(), anyhow::Error> {
                     sums[i % 3] += *b as u64;
                 }
 
-                hpps.insert(hero.name.clone(), dev::HeroPortraitPixels {
-                    id: hero.id,
+                hpps.insert(hero.name().to_string(), dev::HeroPortraitPixels {
+                    id: hero.id(),
                     rgb: sums.map(|s| (s / total) as u8).to_vec(),
                 });
             }
