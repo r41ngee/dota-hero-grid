@@ -415,9 +415,9 @@ dependencies = [
 
 [[package]]
 name = "rdotaconstants"
-version = "0.5.4"
+version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9ae5eb0e34a9d639f70b5fa34dc58fc3fd55d37073185531930038d1b1955264"
+checksum = "cf1ed5cf179cd602103f11fd5ef4e4cf583d1dc6f01c60941711d691fab7d090"
 dependencies = [
  "bincode",
  "serde",
